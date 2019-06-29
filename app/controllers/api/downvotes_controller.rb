@@ -1,14 +1,15 @@
-class Api::DownvotesController < ApplicationController
+class Api::DownvotesController < ApplicationController  
     def create
-        @downvote = Downvote.new(
-            user_id: current_user.id,
-            post_id: params[:post_id]
-        )
-        if @downvote.save
-            render json: {message: "Post downvoted successfully."}
-        else
-            render json: {errors: @downvote.errors.full_messages}, status: :unprocessable_entity
-		end	
+            @downvote = Downvote.new(
+                user_id: current_user.id,
+                post_id: params[:post_id]
+            )
+            if @downvote.save
+                render json: {message: "Post downvoted successfully."}
+            else
+                render json: {errors: @downvote.errors.full_messages}, status: :unprocessable_entity
+            end	
+        render json: {errors: @downvote.errors.full_messages}, status: :unprocessable_entity
     end
 
     def destroy

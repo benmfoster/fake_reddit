@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  
     def create
       user = User.new(
         name: params[:name],
@@ -7,8 +8,6 @@ class Api::UsersController < ApplicationController
         password_confirmation: params[:password_confirmation],
         profile_picture_url: params[:profile_picture_url]
       )
-  
-      
           if user.save
             render json: {message: 'User created successfully'}, status: :created
           else
@@ -17,14 +16,14 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        user_id = params[:id]
-		@user = User.find_by(id: user_id)
-		render 'show.json.jbuilder'
+        user_id = current_user.id
+        @user = User.find_by(id: user_id)
+        render 'show.json.jbuilder'
     end
 
     def update
         @user = User.find(params[:id])
-        @user.user_name = params[:user_name] || @user.user_name
+        @user.name = params[:name] || @user.name
         @user.password = params[:password] || @user.password
         @user.profile_picture_url = params[:profile_picture_url] || @user.profile_picture_url
         if @user.save

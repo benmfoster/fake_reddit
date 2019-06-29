@@ -1,7 +1,7 @@
 class Api::CommentsController < ApplicationController
     def create
         @comment = Comment.new(
-            user_id: current_user.id
+            user_id: current_user.id,
             post_id: params[:post_id],
             text: params[:text]
         )
@@ -16,7 +16,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.find(params[:id])
         @comment.text = params[:text] || @comment.text
         if @comment.save
-            render jason: {message: "Comment updated successfully."}
+            render json: {message: "Comment updated successfully."}
         else
             render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
         end

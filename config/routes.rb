@@ -11,13 +11,13 @@ Rails.application.routes.draw do
     post "/posts" => "posts#create"
     get "/posts/:id" => "posts#show"
     patch "/posts/:id" => "posts#update"
-    delete "/posts/:id" => "posts#delete"
+    delete "/posts/:id" => "posts#destroy"
 
     post "/comments" => "comments#create"
     patch "/comments/:id" => "comments#update"
     delete "/comments/:id" => "comments#destroy"
 
     post "/downvotes" => "downvotes#create"
-    delete "downvotes/:id" => "downvotes#destroy"
+    delete "/downvotes/:id" => "downvotes#destroy"
   end
 end

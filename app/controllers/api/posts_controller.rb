@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
 
     def show
         post_id = params[:id]
-        @post = Post.findby(id: post_id)
+        @post = Post.find_by(id: post_id)
         render 'show.json.jbuilder'
     end
 
@@ -28,7 +28,7 @@ class Api::PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.title = params[:title] || @post.title
         @post.text = params[:text] || @post.text
-        @post.image_url params[:image_url] || @post.image_url
+        @post.image_url = params[:image_url] || @post.image_url
         if @post.save
             render 'show.json.jbuilder'
         else
