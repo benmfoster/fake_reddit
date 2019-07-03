@@ -1,5 +1,9 @@
 class Api::PostsController < ApplicationController
-    def index
+    def index      
+        Post.find_each do |post|
+            post.down = 0
+            post.save!
+        end
         @posts = Post.all
         render 'index.json.jbuilder'
     end
