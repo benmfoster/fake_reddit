@@ -12,8 +12,10 @@ class Api::DownvotesController < ApplicationController
     end
 
     def destroy
-        @downvote = Downvote.find(params[:id])
-        @downvote.destroy
+        # Eventually let's revert back from where and destroy_all to find_by and destroy.
+        @downvote = Downvote.where(post_id: params[:id], user_id: current_user.id)
+        p @downvote
+        @downvote.destroy_all
         render json: {message: "Downvote successfully destroyed."}
     end
 end
