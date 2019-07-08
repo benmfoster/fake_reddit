@@ -16,9 +16,9 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        user_id = current_user.id
-        @user = User.find_by(id: user_id)
-        render 'show.json.jbuilder'
+          user_id = params[:id]
+          @user = User.find_by(id: user_id)
+          render 'show.json.jbuilder'
     end
 
     def update

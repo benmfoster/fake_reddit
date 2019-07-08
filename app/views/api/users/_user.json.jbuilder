@@ -5,8 +5,10 @@ json.downvoted_post_ids user.downvoted_post_ids
 json.posts user.posts do |post|
     json.title post.title
     json.last_edited post.updated_at
-    json.downvotes post.downvotes.length
+    json.downvotes post.downvotes
+    json.total_downvotes post.downvotes.count
     json.text post.text
+    json.id post.id
     json.comments post.comments do |comment|
         json.text comment.text
         json.last_edited comment.updated_at

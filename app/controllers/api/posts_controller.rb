@@ -1,9 +1,5 @@
 class Api::PostsController < ApplicationController
     def index      
-        Post.find_each do |post|
-            post.down = 0
-            post.save!
-        end
         @posts = Post.all
         render 'index.json.jbuilder'
     end
@@ -33,6 +29,7 @@ class Api::PostsController < ApplicationController
         @post.title = params[:title] || @post.title
         @post.text = params[:text] || @post.text
         @post.image_url = params[:image_url] || @post.image_url
+        @post.user_id = current_user.id
         if @post.save
             render 'show.json.jbuilder'
         else

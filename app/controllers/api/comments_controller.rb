@@ -6,7 +6,7 @@ class Api::CommentsController < ApplicationController
             text: params[:text]
         )
         if @comment.save
-            render json: {message: "Comment posted successfully."}
+            render 'show.json.jbuilder'
         else
             render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
         end	
