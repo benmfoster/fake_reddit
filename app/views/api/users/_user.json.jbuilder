@@ -14,5 +14,7 @@ json.posts user.posts do |post|
         json.last_edited comment.updated_at
         json.authored_by comment.user.name
         json.author_id comment.user.id
+        json.post_author comment.post.user.name
+        json.post_author_id comment.post.user.id
     end
 end
