@@ -22,13 +22,10 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-      response = Cloudinary::Uploader.upload(params[:image])
-      cloudinary_url = response["secure_url"]
-
         @user = User.find(params[:id])
         @user.name = params[:name] || @user.name
         @user.password = params[:password] || @user.password
-        @user.profile_picture_url = cloudinary_url || @user.profile_picture_url
+        @user.profile_picture_url = params[:profile_picture_url] || @user.profile_picture_url
         if @user.save
             render 'show.json.jbuilder'
         else
