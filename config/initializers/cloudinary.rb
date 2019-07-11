@@ -1,9 +1,9 @@
 
 
 Cloudinary.config do |config|
-    config.cloud_name = ENV["smpsxn"]
-    config.api_key = ENV["537164188643682"]
-    config.api_secret = ENV["KJk_Xn12QGICJun-N0mA8uK--Ek"]
+    config.cloud_name = ENV["CLOUDINARY_CLOUD_NAME"]
+    config.api_key = ENV["CLOUDINARY_API_KEY"]
+    config.api_secret = ENV["CLOUDINARY_API_SECRET"]
     config.secure = true
     config.cdn_subdomain = true
   end

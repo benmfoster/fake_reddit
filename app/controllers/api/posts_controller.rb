@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
     end
 
     def create
-        response = Cloudinary::Uploader.upload(params[:image])
+        response = Cloudinary::Uploader.upload(params[:image_url])
         cloudinary_url = response["secure_url"]
         @post = Post.new(
             title: params[:title],
