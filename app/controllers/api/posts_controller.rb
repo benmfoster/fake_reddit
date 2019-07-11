@@ -5,11 +5,13 @@ class Api::PostsController < ApplicationController
     end
 
     def create
+        response = Cloudinary::Uploader.upload(params[:image])
+        cloudinary_url = response["secure_url"]
         @post = Post.new(
             title: params[:title],
             text: params[:text],
             user_id: current_user.id,
-            image_url: params[:image_url]
+            image_url: cloudinary_url
         )
         if @post.save
             render 'show.json.jbuilder'
