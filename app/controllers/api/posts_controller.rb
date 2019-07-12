@@ -5,8 +5,12 @@ class Api::PostsController < ApplicationController
     end
 
     def create
-        response = Cloudinary::Uploader.upload(params[:image_url])
-        cloudinary_url = response["secure_url"]
+        if params[:image_url].length > 0
+            response = Cloudinary::Uploader.upload(params[:image_url])
+            cloudinary_url = response["secure_url"]
+        else
+            cloudinary_url = ""
+        end
         @post = Post.new(
             title: params[:title],
             text: params[:text],
@@ -28,15 +32,21 @@ class Api::PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        @post.title = params[:title] || @post.title
-        @post.text = params[:text] || @post.text
-        @post.image_url = params[:image_url] || @post.image_url
-        @post.user_id = current_user.id
-        if @post.save
-            render 'show.json.jbuilder'
+        if params[:image_url].length > 0
+            response = Cloudinary::Uploader.upload(params[:image_url])
+            cloudinary_url = response["secure_url"]
         else
-            render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
+            cloudinary_url = @post.image_url
         end
+            @post.title = params[:title] || @post.title
+            @post.text = params[:text] || @post.text
+            @post.image_url = cloudinary_url
+            @post.user_id = current_user.id
+                if @post.save
+                    render 'show.json.jbuilder'
+                else
+                    render json: {errors: @post.errors.full_messages}, status: :unprocessable_entity
+                end
     end
     
     def destroy
