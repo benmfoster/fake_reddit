@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     delete "/downvotes/:id" => "downvotes#destroy"
 
     post "/notifications" => "notifications#create"
+    delete "/notifications/:id" => "notifications#destroy"
   end
 end

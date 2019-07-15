@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :posts
     has_many :comments
     has_many :downvotes, -> {distinct}
+    has_many :notifications
     has_secure_password
     validates :email, :name, presence: true, uniqueness: true
 

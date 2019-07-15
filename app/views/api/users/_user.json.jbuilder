@@ -2,6 +2,12 @@ json.id user.id
 json.name user.name
 json.profile_picture user.profile_picture_url
 json.downvoted_post_ids user.downvoted_post_ids
+json.notifications user.notifications do |notification|
+    json.post_id notification.post_id
+    json.commenter_id notification.commenter_id
+    json.created_at notification.created_at
+    json.id notification.id
+end
 json.posts user.posts do |post|
     json.title post.title
     json.last_edited post.updated_at
