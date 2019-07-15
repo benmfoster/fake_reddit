@@ -16,4 +16,5 @@ json.comments post.comments do |comment|
     json.author_id comment.user.id
     json.id comment.id
     json.author_image comment.user.profile_picture_url
+    json.tagged_user_id comment.tagged_user_id
 end

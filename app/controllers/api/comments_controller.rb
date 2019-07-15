@@ -3,7 +3,8 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.new(
             user_id: current_user.id,
             post_id: params[:post_id],
-            text: params[:text]
+            text: params[:text],
+            tagged_user_id: params[:tagged_user_id]
         )
         if @comment.save
             render 'show.json.jbuilder'
