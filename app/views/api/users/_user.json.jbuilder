@@ -7,6 +7,7 @@ json.notifications user.notifications do |notification|
     json.commenter_id notification.commenter_id
     json.created_at notification.created_at
     json.id notification.id
+    json.tag notification.tag
 end
 json.posts user.posts do |post|
     json.title post.title
