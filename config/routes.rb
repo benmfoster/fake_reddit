@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
     post "/notifications" => "notifications#create"
     delete "/notifications/:id" => "notifications#destroy"
+
+    get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] } 
   end
 end
