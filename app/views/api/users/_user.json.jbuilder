@@ -1,5 +1,6 @@
 json.id user.id
 json.name user.name
+json.email user.email
 json.profile_picture user.profile_picture_url
 json.downvoted_post_ids user.downvoted_post_ids
 json.notifications user.notifications do |notification|
@@ -8,6 +9,9 @@ json.notifications user.notifications do |notification|
     json.created_at notification.created_at
     json.id notification.id
     json.tag notification.tag
+end
+json.comments user.comments do |comment|
+    json.id comment.id
 end
 json.posts user.posts do |post|
     json.title post.title

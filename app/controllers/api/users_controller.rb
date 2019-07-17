@@ -5,21 +5,21 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    if params[:profile_picture_url].length > 0
+    if params[:profile_picture_url]
       response = Cloudinary::Uploader.upload(params[:profile_picture_url])
       cloudinary_url = response["secure_url"]
     else
       cloudinary_url = ""
     end
-      user = User.new(
+      @user = User.new(
         name: params[:name],
         email: params[:email],
         password: params[:password],
         password_confirmation: params[:password_confirmation],
         profile_picture_url: cloudinary_url
       )
-          if user.save
-            render json: {message: 'User created successfully'}, status: :created
+          if @user.save
+            render 'show.json.jbuilder'
           else
             render json: {errors: user.errors.full_messages}, status: :bad_request
           end
@@ -33,7 +33,7 @@ class Api::UsersController < ApplicationController
 
     def update
       @user = User.find(params[:id])
-      if params[:profile_picture_url].length > 0
+      if params[:profile_picture_url]
         response = Cloudinary::Uploader.upload(params[:profile_picture_url])
         cloudinary_url = response["secure_url"]
       else

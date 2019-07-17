@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
     end
 
     def create
-        if params[:image_url].length > 0
+        if params[:image_url]
             response = Cloudinary::Uploader.upload(params[:image_url])
             cloudinary_url = response["secure_url"]
         else
@@ -32,7 +32,7 @@ class Api::PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        if params[:image_url].length > 0
+        if params[:image_url]
             response = Cloudinary::Uploader.upload(params[:image_url])
             cloudinary_url = response["secure_url"]
         else
