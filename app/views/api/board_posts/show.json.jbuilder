@@ -1,0 +1,1 @@
+json.partial! "board_post.json.jbuilder", board_post: @board_post
