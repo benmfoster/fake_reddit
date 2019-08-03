@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     patch "/board_posts/:id" => "board_posts#update"
     delete "/board_posts/:id" => "board_posts#destroy"
 
-    get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] } 
+    
   end
+  get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] } 
 end
