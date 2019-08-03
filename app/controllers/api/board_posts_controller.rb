@@ -6,8 +6,8 @@ class Api::BoardPostsController < ApplicationController
 
     def create
         @board_post = BoardPost.new(
-            user_id: current_user.id,
-            text: params[:text],
+            user_id: params[:user_id],
+            text: params[:text]
         )
         if @board_post.save
             render 'show.json.jbuilder'
