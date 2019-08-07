@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    if params[:profile_picture_url]
+    if params[:profile_picture_url] == true
       response = Cloudinary::Uploader.upload(params[:profile_picture_url])
       cloudinary_url = response["secure_url"]
     else
@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
           if @user.save
             render 'show.json.jbuilder'
           else
-            render json: {errors: user.errors.full_messages}, status: :bad_request
+            render json: {errors: @user.errors.full_messages}, status: :bad_request
           end
     end
 
