@@ -3,12 +3,17 @@ On Fake Reddit, a user can create her own profile, publish posts, and "downvote"
 
 ![fake reddit screenshot](app/assets/images/Screenshot%20from%202019-07-23%2014-19-43.png?raw=true "screenshot")
 
+![fake reddit screenshot](app/assets/images/Screenshot%20from%202019-07-23%2015-22-14.png?raw=true "screenshot")
+
 In July 2019, I presented my capstone project Fake Reddit to a group of panelists including the CEO of Actualize, Jay Wengrow, as well as outside software engineers. I had a polite but heated exchange with Robert Rosenberg of Off Base Productions.
+http://youtu.be/UVH-j_1G_ks?t=5389
 
 
 More Projects
 
 Fake Reddit Board, which I created with React.js, is an exclusive, one-page take on Fake Reddit, residing within Fake Reddit's social architecture. Think authoritarian /b. https://github.com/benmfoster/fake-reddit-board
+
+![fake reddit board screenshot](app/assets/images/screenshot-lit-escarpment-59964.herokuapp.com-2019.08.05-15_09_14.png?raw=true "screenshot")
 
 
 Check out some "Most Hated" badges I mocked up on CodePen https://codepen.io/benmfoster/pen/KOMVKe
