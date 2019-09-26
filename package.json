@@ -1,5 +1,8 @@
 {
   "name": "fake_reddit",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "animate.css": "^3.7.2",
+    "moment": "^2.24.0"
+  }
 }
