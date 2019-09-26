@@ -1,4 +1,9 @@
 # Fake Reddit
+
+#### Dependencies
+- npm install moment --save
+- npm install animate.css --save
+
 Fake Reddit constituted my capstone project for Actualize Coding Bootcamp. I deployed the first offical version of the application in July 2019.
 
 Fake Reddit is a social board for misanthropes.
